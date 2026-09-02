@@ -1,5 +1,6 @@
 # ConnectPro
-Professional Networking Platform
+Professional Networking Platform.
+
 Developed a LinkedIn-inspired professional networking web application using React.
 Built reusable and responsive UI components for different sections of the application.
 Integrated REST APIs using Axios to communicate with the backend and manage application data.
