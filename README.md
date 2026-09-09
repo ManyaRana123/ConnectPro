@@ -9,4 +9,3 @@ Used Formik for form handling and validation.
 Implemented features such as user profiles, posts, authentication, and API-based data handling.
 Used React Router for navigation between different pages and user sections.
 Currently expanding the project toward a full-stack MERN application
->>>>>>> 0568a290f68c0bd8c04c8eb12169d770b408079c
