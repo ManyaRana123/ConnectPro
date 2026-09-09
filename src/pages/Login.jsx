@@ -2,6 +2,8 @@ import { useFormik } from "formik";
 import { LuUsers } from "react-icons/lu";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../axios/axiosInstance.js"
+import { toast } from "react-toastify";
+
 
 export default function Login(){
     const navigate = useNavigate();      
@@ -26,11 +28,13 @@ export default function Login(){
             "authData",
             JSON.stringify(result)
         );
+        toast.success("Login successful!");
 
         navigate("/");
         
     } catch (error) {
         console.error("Login failed:", error);
+        toast.error("Login failed. Please check your credentials.");
         resetForm();
     }
 }
@@ -78,7 +82,7 @@ export default function Login(){
                                 </div>
                                 <button type="submit" className="mt-5 w-full bg-blue-600 text-white py-2 px-4 rounded-3xl hover:bg-blue-500 transition-colors" disabled={formik.isSubmitting}>
                                     {
-                                        formik.isSubmitting?("logging in..."):("log in")
+                                        formik.isSubmitting?("Logging in..."):("Log in")
                                     }
                                    </button>
                             </form>
@@ -102,12 +106,12 @@ export default function Login(){
                         <p className="text-gray-300 text-sm font-medium">Members</p>
                     </div>
                     <div className="flex flex-col gap-1 rounded-xl bg-white/10 p-4 text-white shadow-lg backdrop-blur">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up h-5 w-5" aria-hidden="true"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-trending-up h-5 w-5" aria-hidden="true"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg>
                         <p className="text-2xl font-bold">120M</p>
                         <p className="text-gray-200 text-sm font-medium">Connections</p>
                     </div>
                     <div className="flex flex-col gap-1 rounded-xl bg-white/10 p-4 text-white shadow-lg backdrop-blur">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase h-5 w-5" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-briefcase h-5 w-5" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
                         <p className="text-2xl font-bold">48k</p>
                         <p className="text-gray-100 text-sm font-medium">Companies</p>
                     </div>

@@ -1,15 +1,17 @@
 export default function Rightsidebar() {
 
        return(
-              <aside className="sticky top-20 self-start">
-                                <div className="flex flex-col gap-3 bg-white shadow-sm border border-gray-200 p-4 rounded-2xl">
+              <aside className="sticky top-20 self-start ">
+                                <div className="flex flex-col gap-3  bg-white shadow-sm border border-gray-200 p-4 rounded-2xl">
                                     <p className="text-md font-medium">People you may know</p>
                                     {/* connect cards */}
                                     <div className="flex items-center justify-evenly">
+                                        <div className="flex gap-2">
                                         <img className="aspect-square h-10 w-10 rounded-full" alt="Priya Sharma" src="https://i.pravatar.cc/120?img=47"></img>
                                         <div className="w-[120px]">
                                             <p className="font-medium text-sm">Priya Sharma</p>
                                             <p className="truncate text-xs text-gray-600">Frontend Engineer at Vercel</p>
+                                        </div>
                                         </div>
                                         <button className="w-20 h-8 flex items-center justify-center rounded-full text-xs border border-gray-300 font-medium text-gray-800 bg-[#F5FAFF] hover:bg-green-500 hover:text-white">
                                             Connect
@@ -17,30 +19,36 @@ export default function Rightsidebar() {
                                     </div>
 
                                     <div className="flex items-center justify-evenly">
+                                        <div className="flex gap-2">
                                             <img className="aspect-square h-10 w-10 rounded-full" alt="Daniel Okafor" src="https://i.pravatar.cc/120?img=33" />
                                             <div className="w-[120px]">
                                                 <p className="font-medium text-sm   ">Daniel Okafor</p>
                                                 <p className="truncate text-xs text-gray-600">Engineering Manager at Notion</p>
                                             </div>
+                                        </div>
                                              <button className="w-20 h-8 flex items-center justify-center rounded-full text-xs border border-gray-300 font-medium text-gray-800 bg-[#F5FAFF] hover:bg-green-500 hover:text-white">
                                             Connect
                                         </button>
                                     </div>
                                     <div className="flex items-center justify-evenly">
+                                        <div className="flex gap-2">
                                         <img className="aspect-square h-10 w-10 rounded-full" alt="Mei Tanaka" src="https://i.pravatar.cc/120?img=49" />
                                         <div className="w-[120px]">
                                             <p className="font-medium text-sm">Mei Tanaka</p>
                                             <p className="truncate text-xs text-gray-600">Product Manager · Ex-Google</p>
+                                        </div>
                                         </div>
                                          <button className="w-20 h-8 flex items-center justify-center rounded-full text-xs border border-gray-300 font-medium text-gray-800 bg-[#F5FAFF] hover:bg-green-500 hover:text-white">
                                             Connect
                                         </button>
                                     </div>
                                     <div className="flex items-center justify-evenly">
+                                        <div className="flex gap-2">
                                         <img className="aspect-square h-10 w-10 rounded-full" alt="Lucas Romero" src="https://i.pravatar.cc/120?img=15" />
                                         <div className="w-[120px]">
                                             <p className="font-medium text-sm">Lucas Romero</p>
                                             <p className="truncate text-xs text-gray-600">Founder & CEO at Driftly.co</p>
+                                        </div>
                                         </div>
                                          <button className="w-20 h-8 flex items-center justify-center rounded-full text-xs border border-gray-300 font-medium text-gray-800 bg-[#F5FAFF] hover:bg-green-500 hover:text-white">
                                             Connect

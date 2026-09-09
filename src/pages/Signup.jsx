@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { useFormik } from "formik"
 import axiosInstance from "../axios/axiosInstance.js"
+import { toast } from "react-toastify";
 
 export default function Signup(){
     // it's an object of initiavalues, whenever the page loads it shows empty fields.
@@ -11,6 +12,7 @@ export default function Signup(){
       phoneNumber : "",
       password : "",
       confirmPassword : "",
+      profileImage : ""
 
     }
     // it is a hook . it accepts an object and stores data in key value pair.
@@ -20,6 +22,7 @@ export default function Signup(){
       console.log(values);
        const result = await axiosInstance.post("api/auth/signup", values);
        console.log(result);
+       toast.success("Account created successfully!");
        resetForm();
     }
     })
@@ -58,6 +61,11 @@ export default function Signup(){
              <div className="mt-6">
                <form onSubmit={formik.handleSubmit}>
                 {/* 1 */}
+                 <div className="mb-4">
+                  <div>
+                    <label htmlFor="profile-Url" className="block">Profile URL</label>
+                   <input id="profile-Url" type="url" name="profileImage" value={formik.values.profileUrl} onChange={formik.handleChange} className="border border-gray-200 w-full rounded-lg border border-gray-200 shadow-sm px-3 py-1 outline-none focus:border-blue-700"/></div>
+                </div>
                 <div className="flex justify-between">
                 <div>
                   <label htmlFor="first-name" className="block">First name</label>
@@ -97,7 +105,7 @@ export default function Signup(){
 
               <button type="submit" className="bg-blue-600 text-white hover:bg-blue-500 cursor-pointer shadow:sm w-full mt-4 p-2 rounded-full font-medium" disabled={formik.isSubmitting}>
                 {
-                  formik.isSubmitting ?("creating account..."):("Create account")
+                  formik.isSubmitting ?("Creating account..."):("Create account")
 
                 }
                </button>

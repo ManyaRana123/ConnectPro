@@ -88,7 +88,7 @@ export default function Settings(){
                         <div className="font-medium">Privacy</div>
                         </div> 
 
-                        <div class="flex items-start justify-between gap-4 my-5">
+                        <div className="flex items-start justify-between gap-4 my-5">
                             <div>
                                 <div className="text-sm font-medium text-gray-700">Public profile</div>
                                 <div className="text-xs text-gray-500">Allow anyone to view your profile.</div>
@@ -98,20 +98,20 @@ export default function Settings(){
                         </div>
                         <hr className="text-gray-300"></hr>
 
-                        <div class="flex items-start justify-between gap-4 my-5">
+                        <div className="flex items-start justify-between gap-4 my-5">
                             <div>
-                                <div class="text-sm font-medium text-gray-700">Show activity</div>
-                                <div class="text-xs text-gray-500">Let connections see when you're active.</div>
+                                <div className="text-sm font-medium text-gray-700">Show activity</div>
+                                <div className="text-xs text-gray-500">Let connections see when you're active.</div>
                                 </div>
                                 <button>...</button>
                         </div>
                         
                         <hr className="text-gray-300"></hr>
 
-                        <div class="flex items-start justify-between gap-4 my-5">
+                        <div className="flex items-start justify-between gap-4 my-5">
                             <div>
-                                <div class="text-sm font-medium text-gray-700">Discoverable by email</div>
-                                <div class="text-xs text-gray-500">Allow people to find you by email.</div>
+                                <div className="text-sm font-medium text-gray-700">Discoverable by email</div>
+                                <div className="text-xs text-gray-500">Allow people to find you by email.</div>
                                 </div>
                                 <button>...</button>
                         </div>
@@ -124,7 +124,7 @@ export default function Settings(){
                         <div className="font-medium">Notifications</div>
                         </div> 
 
-                        <div class="flex items-start justify-between gap-4 my-5">
+                        <div className="flex items-start justify-between gap-4 my-5">
                             <div>
                                 <div className="text-sm font-medium text-gray-700">Connection requests</div>
                                 <div className="text-xs text-gray-500">Email me about new requests.</div>
@@ -134,20 +134,20 @@ export default function Settings(){
                         </div>
                         <hr className="text-gray-300"></hr>
 
-                        <div class="flex items-start justify-between gap-4 my-5">
+                        <div className="flex items-start justify-between gap-4 my-5">
                             <div>
-                                <div class="text-sm font-medium text-gray-700">Likes & comments</div>
-                                <div class="text-xs text-gray-500">Get notified about engagement.</div>
+                                <div className="text-sm font-medium text-gray-700">Likes & comments</div>
+                                <div className="text-xs text-gray-500">Get notified about engagement.</div>
                                 </div>
                                 <button>...</button>
                         </div>
                         
                         <hr className="text-gray-300"></hr>
 
-                        <div class="flex items-start justify-between gap-4 my-5">
+                        <div className="flex items-start justify-between gap-4 my-5">
                             <div>
-                                <div class="text-sm font-medium text-gray-700">Weekly digest</div>
-                                <div class="text-xs text-gray-500">A summary every Monday morning.</div>
+                                <div className="text-sm font-medium text-gray-700">Weekly digest</div>
+                                <div className="text-xs text-gray-500">A summary every Monday morning.</div>
                                 </div>
                                 <button>...</button>
                         </div>
@@ -192,7 +192,7 @@ export default function Settings(){
                              className="border px-4 py-2 text-sm flex-1 rounded-xl border-gray-200 shadow-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-600"/>
                              </div>
 
-                             <div class="flex justify-end pt-2">
+                             <div className="flex justify-end pt-2">
                                 <button className="h-10 w-45 bg-blue-600 hover:bg-blue-500 text-white text-center p-2 rounded-full flex items-center justify-center text-sm font-medium">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-lock mr-1.5 h-4 w-4" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                     </svg>

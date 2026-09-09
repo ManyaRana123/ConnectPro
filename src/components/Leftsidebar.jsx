@@ -7,11 +7,13 @@ import { Link, NavLink} from "react-router-dom";
 import axiosInstance from "../axios/axiosInstance.js";
 import Logout from "../pages/Logout.jsx";
 import { useEffect, useState } from "react";
+import defaultProfileImage from "../assets/default-profile-image.png";
 
 export default function Leftsidebar() {
   
   const [firstName, setFname] = useState(null); 
     const [lastName, setLname] = useState(null);
+    const [profileImage, setProfileImage] = useState(null);
 
     useEffect(() => {
     getPosts();
@@ -22,10 +24,11 @@ export default function Leftsidebar() {
       const authData = JSON.parse(localStorage.getItem("authData"));
       console.log("Auth Data:", authData);
       const userId = authData.user.id;
-      const response = await axiosInstance.get(`api/users/${userId}`);
+      const response = await axiosInstance.get(`api/users/profile/${userId}`);
       console.log("User Data:", response);
       setFname(response.user.firstName);
       setLname(response.user.lastName);
+      setProfileImage(response.user.profileImage);
     } catch (error) {
       console.error("Failed to fetch user data:", error);
     }
@@ -36,7 +39,7 @@ export default function Leftsidebar() {
       <div className="bg-white shadow-sm border border-gray-200 pb-5 rounded-2xl">
         <div className="h-16 w-full bg-gradient-to-r from-blue-500 to-emerald-400 rounded-t-2xl"></div>
         <img
-          src="https://i.pravatar.cc/160?img=12"
+          src={profileImage ? profileImage : defaultProfileImage}
           alt="User profile"
           className="w-19 h-19 rounded-full cursor-pointer flex mx-auto -mt-10 items-center border border-white border-5"
         />

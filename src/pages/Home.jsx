@@ -6,10 +6,14 @@ import { FaRegComment } from "react-icons/fa";
 import { RiShareLine } from "react-icons/ri";
 import axiosInstance from "../axios/axiosInstance.js";
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import defaultProfileImage from "../assets/default-profile-image.png";  
+
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
+  const[profileImage, setProfileImage] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -19,12 +23,17 @@ export default function Home() {
     onSubmit: async (values, { resetForm }) => {
       try {
         await axiosInstance.post("api/posts", values);
+        toast.success("Post created successfully!");
+        getPosts();
         resetForm();
       } catch (error) {
         console.error("Post failed:", error);
+        toast.error("Post Failed,please try again.");
+        resetForm();
       }
     },
   });
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -34,11 +43,29 @@ export default function Home() {
       const authData = JSON.parse(localStorage.getItem("authData"));
       console.log("Auth Data:", authData);
       const userId = authData.user.id;
-      const response = await axiosInstance.get(`api/posts/user/${userId}`);
+      const response = await axiosInstance.get(`api/posts`);
       console.log("Posts:", response);
       setPosts(response.posts);
+    } 
+    catch (error) {
+      console.log("Failed to fetch posts:", error);
+    }
+  };
+  
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  const getProfile = async () => {
+    try {
+      const authData = JSON.parse(localStorage.getItem("authData"));
+      const userId = authData.user.id;
+      const response = await axiosInstance.get(`/api/users/profile/${userId}`);
+      console.log("Profile:", response);
+      setProfileImage(response.user.profileImage);
     } catch (error) {
-      console.error("Failed to fetch posts:", error);
+      console.error("Failed to fetch profile:", error);
+      toast.error("Failed to fetch profile.");
     }
   };
 
@@ -51,7 +78,7 @@ export default function Home() {
             <form onSubmit={formik.handleSubmit}>
               <div className="flex gap-2">
                 <img
-                  src="https://i.pravatar.cc/160?img=12"
+                  src={profileImage ? profileImage : defaultProfileImage}
                   alt="User profile"
                   className="w-15 h-15 rounded-full cursor-pointer flex mx-auto items-center border border-white border-5"
                 />
@@ -67,7 +94,7 @@ export default function Home() {
               </div>
               <div className="w-full mt-4 pl-5 p-2 shadow-sm rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500 p-2 bg-gray-100 flex gap-2 items-center">
                 <TbPhoto
-                  htmlfor="fileInput"
+                  htmlFor="fileInput"
                   className="text-blue-500 text-lg cursor-pointer"
                 />
                 <input
@@ -109,22 +136,24 @@ export default function Home() {
           </div>
 
           {/* div 2 */}
-          {posts.map((post) => {
+          {posts?.map((post) => {
             return(
-  <>
+
+            <Fragment key={post._id}>          
+              {/* Post Card */}
               <div className="bg-white pt-4 border border-gray-200 mt-4 shadow-sm rounded-2xl">
                 <div className="px-5">
                   <div className="flex items-center gap-3">
                     <img
                       className="aspect-square h-12 w-12 rounded-full"
                       alt="Mei Tanaka"
-                      src="https://i.pravatar.cc/120?img=49"
+                      src={post.user?.profileImage ? post.user?.profileImage : defaultProfileImage}
                     />
                     <div className="w-full">
                       <p className="font-medium text-sm">
                         {post.user?.firstName} {post.user?.lastName}
                         <span className="text-gray-500 text-xs font-normal">
-                          &nbsp;&nbsp;&nbsp;·2h
+                          &nbsp;&nbsp;&nbsp;
                         </span>
                       </p>
                     </div>
@@ -135,9 +164,9 @@ export default function Home() {
                 </div>
                 <div>
                   <img
-                    src={post.image}
-                    alt=""
-                    class="max-h-full w-full object-cover"
+                    src={post.image ? post.image : defaultProfileImage}
+                    alt="image"
+                    className="max-h-full w-full object-cover"
                   ></img>
                 </div>
                 <div className="flex justify-between px-5 py-2 text-gray-600 text-sm">
@@ -167,7 +196,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </>
+            </Fragment>
             )
           
           })}

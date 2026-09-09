@@ -1,6 +1,32 @@
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axiosInstance from "../axios/axiosInstance.js";
+import { toast } from "react-toastify";
+import defaultProfileImage from "../assets/default-profile-image.png";
+
+
+
+
 function Header(){
+  const [profileImage, setProfileImage] = useState(null);
+
+  useEffect(() => {
+    getProfile();
+  }, []);
+
+  const getProfile = async () => {
+    try {
+      const authData = JSON.parse(localStorage.getItem("authData"));
+      const userId = authData.user.id;
+      const response = await axiosInstance.get(`/api/users/profile/${userId}`);
+      setProfileImage(response.user.profileImage);
+    } catch (error) {
+      console.error("Failed to fetch profile:", error);
+      toast.error("Failed to fetch profile.");
+    }
+  };
+
     return(
 
         <header className="border-b-1 border-gray-200 w-full bg-white opacity-200 fixed top-0 z-50">
@@ -44,7 +70,7 @@ function Header(){
 
           <li>
             <Link to="/profile" aria-label="Profile">
-              <img src="https://i.pravatar.cc/160?img=12" alt="User profile" className="w-9 h-9 rounded-full cursor-pointer"/>
+              <img src={profileImage ? profileImage : defaultProfileImage} alt="User profile" className="w-9 h-9 rounded-full cursor-pointer"/>
             </Link>
           </li>
         </ul>
